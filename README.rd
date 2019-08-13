@@ -2,7 +2,7 @@
 
 #What is MLDA?
 
-MLDA is the software for detecting DTU genes and obtaining gene or isoform expressions under multiple conditions from RNA-seq data given a reference transcriptome,  The program obtains results using the alignment from Bowtie 2.
+MLDA is the software for detecting DTU genes and obtaining relative transcript abundance, and gene or isoform expressions under multiple conditions from RNA-seq data given a reference transcriptome,  The program obtains results using the alignment from Bowtie 2.
 
 The software is an open-source software. You can redistribute it and/or modify it under the terms of the GNU General Public License (GPL) as published by the Free Software Foundation.
 
@@ -11,8 +11,9 @@ The software is an open-source software. You can redistribute it and/or modify i
 ##Features
 
 >* MLDA detects DTU genes under mulptiple conditions by likelihood ratio test based on maximum likelihood of two models(LR0 and LR1).
+>* MLDA 
 >* MLDA provides an approach to accurately estimate gene and isoform expression from RNA-Seq data by modeling the isoform- and exon-specific read sequencing biases.
->* MLDA provides an approach to accurately estimate isoform abundances under different conditions.
+>* MLDA provides an approach to accurately estimate relative transcript abundance under different conditions.
 
 #Contact
 Users can ask technical questions by sending emails to Xuejun Liu (xuejun.liu@nuaa.edu.cn).
