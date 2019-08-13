@@ -43,7 +43,7 @@ GSL can be found in the gsl subdirectory on your nearest GNU mirror ( http://ftp
 We recommend using the Linux operating system. 
 ##Installation
 
->* First, go to the location of NLDMseq
+>* First, go to the location of MLDA
 
 ```
     $cd ~
