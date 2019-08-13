@@ -159,7 +159,10 @@ $ $ python MLDA_calculation.py -c 3 -r 2 -o /home/tutut/MLDA/software/MLDA/Resul
 After running the above command, you will obtain three output folders of this paired-end data, ***LR0_result*** and ***LR1_result*** ***LRT_result*** under -o path.
 
 #Authors
+
 Xuejun Liu (xuejun.liu@nuaa.edu.cn).College of Computer Science and Technology, Nanjing University of Aeronautics and Astronautics, 29Jiangjun Rd., Jiangning District, 211106Nanjing China.
+
+The MLDA algorithm is developed by Xuejun Liu and Jing Li. The MLDA software is mainly implemented by Jing Li.
 
 #Related software
 
