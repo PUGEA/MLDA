@@ -180,10 +180,9 @@ Use the example(Single-End Reads/Paired-End Reads) from aligning sequenced reads
 
 ## <a name="example" id="example"></a> Simulation Data 
 
- We generated  two simulated datasets using our model based on the calculated hyperparameters and number of reads from the SEQC dataset. The two simulation datasets both used the Ensembl (NCBI37/hg19) as a reference.
+ We generated  a simulated dataset using our model based on the calculated hyperparameters and number of reads from the SEQC dataset. The simulation dataset used the Ensembl (NCBI37/hg19) as a reference.
 
 *   [Single-end simulation dataset]. (50bp, 4 condition, 3 replicates for each condition, 2000 genes)
-*   [Paired-end simulation dataset]. (50bp, 4 condition, 3 replicates for each condition, 2000 genes)
 
 &nbsp;
 
