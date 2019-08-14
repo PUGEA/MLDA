@@ -1,34 +1,60 @@
 #MLDA
 
-#What is MLDA?
 
-MLDA is the software for detecting DTU genes and obtaining relative transcript abundance, and gene or isoform expressions under multiple conditions from RNA-seq data given a reference transcriptome,  The program obtains results using the alignment from Bowtie 2.
-
+A bioinformatics tool for detecting differential transcript usage across multiple conditions based on the smoothed LDA model from RNA-seq data.
 The software is an open-source software. You can redistribute it and/or modify it under the terms of the GNU General Public License (GPL) as published by the Free Software Foundation.
 
-#How MLDA works?
+Xuejun Liu (xuejun.liu@nuaa.edu.cn)
 
-##Features
+
+* * *
+
+## <a name="introduction"></a>Features
 
 >* MLDA detects DTU genes under mulptiple conditions by likelihood ratio test based on maximum likelihood of two models(LR0 and LR1).
->* MLDA 
 >* MLDA provides an approach to accurately estimate gene and isoform expression from RNA-Seq data by modeling the isoform- and exon-specific read sequencing biases.
->* MLDA provides an approach to accurately estimate relative transcript abundance under different conditions.
+>* MLDA provides an approach to accurately estimate isoform abundances under different conditions.
 
-#Contact
-Users can ask technical questions by sending emails to Xuejun Liu (xuejun.liu@nuaa.edu.cn).
+* * *
 
-#Installation
+## <a name="introduction"></a> Introduction
 
-##Installation requirements:
+MLDA detects differential transcript usage across multiple conditions based on the smoothed LDA model
+ in light of the high similarity in structures between RNA-Seq data and text data. MLDA models the stochastic 
+procedure of the generation of RNA-seq reads and avoids the effects of multi-source mappings of reads. 
+It can directly obtain the relative abundance of transcripts and uses likelihood ratio test is to detect DTU.
 
->* Operating system :
-	Linux( Ubuntu13.10 or Fedora 17…)
-	Mac OS X (Mac OS X 10.8 5 or higher)
->* Python 2.7 
->* GUN Scientific Library GCC 4.8.1 or higher(http://www.gnu.org/software/gsl/)
->* Python package: parallel python (pp)(http://www.parallelpython.com/) 
->* Bowtie2
+MLDA package is the software for detecting DTU genes and obtaining gene or isoform expressions under multiple conditions from RNA-seq data given a reference transcriptome,  The program obtains results using the alignment from Bowtie 2.
+
+* * *
+
+## <a name="compilation"></a>  Installation
+
+You can click [here](https://github.com/PUGEA/MLDA) to download the MLDA software. 
+
+To compile MLDA in Linux, run in the MLDA folder.
+
+```shell
+$ bash ./install_LR0.sh
+$ bash ./install_LR1.sh
+```
+
+To test this software, the user can run the python script *test.py* .
+This will check whether the software has been built and installed correctly. 
+It will detect DTU gene and calculate the expression of genes and isoforms using the data from the TEST_DATA folder.
+
+```shell
+$ python test.py
+```
+
+###Installation requirements:
+
+*   MLDA implementation uses Python (v.2.7) to pre-process the RNA-seq data and C language to obtain relative transcript abundances and gene/isoform expression levels.
+*   In MLDA, the Python codes use two special modules, [NumPy](http://www.numpy.org/) and [PP](http://www.parallelpython.com/) (parallel python).
+*   MLDA uses Bowtie2 to align reads to transcript reference  sequences, so you need to have [Bowtie2](http://bowtie-bio.sourceforge.net/bowtie2/index.shtml) installed.
+*   GUN Scientific Library GCC 4.8.1 or higher(http://www.gnu.org/software/gsl/)
+
+* * *
 
 ###NOTE: 
  ***PP*** is a python module which provides mechanism for parallel execution of python code on SMP(systems with multiple processors or cores) and clusters (computers connected via network). It is light, easy to install and integrate with other python software. PP is an open-source and cross-platform module written in pure python.
@@ -42,37 +68,14 @@ If GSL is installed, the command above should return the following information:
 GSL can be found in the gsl subdirectory on your nearest GNU mirror ( http://ftpmirror.gnu.org/gsl/) or the Main GNU ftp site (ftp://ftp.gnu.org/gnu/gsl/). The users can download gsl-1.6.tar.gz or a higher version for NLDMseq. Please follow the instructions in the included file “INSTALL” to guide  the installation of this library.
 
 We recommend using the Linux operating system. 
-##Installation
 
->* First, go to the location of MLDA
+&nbsp;
 
-```
-    $cd ~
-```
+* * *
 
->* Second, install the software by the install.sh shell script.
+## <a name="usage"></a> Usage
 
-```
-$./install_LR0.sh
-$./install_LR1.sh
-```
-
-NOTE:The user may have to give the script execute permissions by `chmod u+x install_LR0.sh and install_LR1.sh`. This script will use the gcc complier to build C codes in the software.
->* Test the software
-
-```shell
-$python test.py
-```
-
-To test this software, the user can run the python script *test.py* .This will check whether the software has been built and installed correctly. It will detect DTU gene and calculate the expression of genes and isoforms using the data from the TEST_DATA folder.
-
-##Running MLDA
- run example to test:
-$ bash run_example.sh
-
-Use the example(Single-End Reads/Paired-End Reads) from aligning sequenced reads with Bowtie 2 to test this software, the user can run the script *run_example.sh* .This will check whether the software can run on data of reads under multiple conditions. It will detect DTU gene and calculate the expression of genes and isoforms using the data from the bowtie folder.
-
->* Step 1. Aligning sequenced reads with Bowtie 2
+### Step 1. Aligning sequenced reads with Bowtie 2
 The following commands are used to align sequenced reads to a reference transcriptome.
 ```shell
 $ bowtie2-build -f ref_transcript. Fasta ref_transcript.index
@@ -87,7 +90,9 @@ $ bowtie2 –t –f -k 20 -p 4 --no-hd --no-unal --no-mixed --no-discordant -x r
 
 The above transcriptome reference sequence can be downloaded from UCSC or Ensembl website.
 
->* Step 2. Detect DTU gene and calculate expression values with MLDA
+### &nbsp;
+
+### Step 2. Detect DTU gene and calculate expression values with MLDA
 
 The software uses the alignment SAM file from Bowtie 2 as input data.
 
@@ -96,40 +101,47 @@ $ python MLDA_calculation.py -s single -c condition -r replicate -o output_path 
 ```
 
 Options:
->* -h/--Help #get help info
->* -s/--SingleEnd: Input data are Single-end reads alignment. (Default: off)
->* -c/--Condition: <int> The value of condition
->* -r/--Replicate: <int > The value of replicate
->* -o/--OutputPath: All output files are in this direction
->* -g/--GeneFile: The path of genename file including all genenames for detecting DTU, the genename is the beginning of each line.(format:"ENSG00000000003\t...\n")
->* -b/--Bound: <float>  The cutoff of pvalue(qvalue) for DTU gene(e.g,0.05)'
->* -i/--Input: File Path+Prefix name of alignment File(s) under all conditions,use comma separating the input files if more than one files are provided.(e.g,/home/tutut/example1,/home/tutut/example2)'
->* -t/--AnnotationType   <int>    supported four annotation types: refGene: 1, ensGene: 2, knownGene: 3 and Ensembl: 4'
->* -a/--AnnotationFile: The path of annotation file, the file includes the gene and isoform information. eg: refGene, knownGene, and ensGene, which all can be download UCSC website. If you use the Ensembl dataset, you may use the .gtf file.'
+
+*   -h/--Help #get help info
+*   -s/--SingleEnd: Input data are Single-end reads alignment. (Default: off)
+*   -c/--Condition: <int> The value of condition
+*   -r/--Replicate: <int > The value of replicate
+*   -o/--OutputPath: All output files are in this direction
+*   -g/--GeneFile: The path of genename file including all genenames for detecting DTU, the genename is the beginning of each line.(format:"ENSG00000000003\t...\n")
+*   -b/--Bound: <float>  The cutoff of pvalue(qvalue) for DTU gene(e.g,0.05)'
+*   -i/--Input: File Path+Prefix name of alignment File(s) under all conditions,use comma separating the input files if more than one files are provided.(e.g,/home/tutut/example1,/home/tutut/example2)'
+*   -t/--AnnotationType   <int>    supported four annotation types: refGene: 1, ensGene: 2, knownGene: 3 and Ensembl: 4'
+*   -a/--AnnotationFile: The path of annotation file, the file includes the gene and isoform information. eg: refGene, knownGene, and ensGene, which all can be download UCSC website. If you use the Ensembl dataset, you may use the .gtf file.'
 
 Output files:
-The MLDA produces qvalue of each gene for detecting DTU and gene/isoform expression output files, which are put under the path given in the option -o/--OutputPaht
 
+MLDA produces qvalue of each gene for detecting DTU and gene/isoform expression output files, which are put under the path given in the option -o/--OutputPaht
 
 Description of output files:
-1 LR0_result/LR1_result:
-(1) alpha: Dirichlet distribution hyperparameter of isoform abundances
-(2) eta: Dirichlet distribution hyperparameter of exon abundances
-(3) gammas: isoform abundances under all conditions
-(4) geneExpre: FPKM expression value of gene under all samples
-(5) isoExpre: FPKM expression value of isoform under all samples
-(6) likelihood: Maximum log likelihood of each gene
-2 LRT_result
-(1) LR_value:Chi-square value and isoform num of each gene
-(2) DTU_value:p_value and q_value of each gene for detecting DTU
 
+*   **Folder: LR0_result/LR1_result:
 
-#Example
+*   **(1) alpha: Dirichlet distribution hyperparameter of isoform abundances
+*   **(2) eta: Dirichlet distribution hyperparameter of exon abundances
+*   **(3) gammas: isoform abundances under all conditions
+*   **(4) geneExpre: FPKM expression value of gene under all samples
+*   **(5) isoExpre: FPKM expression value of isoform under all samples
+*   **(6) likelihood: Maximum log likelihood of each gene
+
+*   **Folder: LRT_result
+
+*   **(1) LR_value:Chi-square value and isoform num of each gene
+*   **(2) DTU_value:p_value and q_value of each gene for detecting DTU
+
+### &nbsp;
+
+## <a name="example"></a> Example
+
 Here, we use a simple example to show the usage of MLDA. The alignment files from Bowtie 2 and the annotation file are also supplied.
 
->* Annotation file: Homo_sapiens.GRCh37.71.gtf
->* Alignment from Bowtie2: example1.sam...example8.sam (single-end,4 condition,2 replicate)
->* Alignment from Bowtie2: example1.sam...example6.sam (paired-end,3 condition, 2 replicate)
+*    Annotation file: Homo_sapiens.GRCh37.71.gtf
+*    Alignment from Bowtie2: example1.sam...example8.sam (single-end,4 condition,2 replicate)
+*    Alignment from Bowtie2: example1.sam...example6.sam (paired-end,3 condition, 2 replicate)
 
 Since the Bowtie2 output has been supplied, so you can skip step1 and just run the following command.
 
@@ -159,13 +171,29 @@ $ $ python MLDA_calculation.py -c 3 -r 2 -o /home/tutut/MLDA/software/MLDA/Resul
 ```
 After running the above command, you will obtain three output folders of this paired-end data, ***LR0_result*** and ***LR1_result*** ***LRT_result*** under -o path.
 
-#Authors
+
+Use the example(Single-End Reads/Paired-End Reads) from aligning sequenced reads with Bowtie 2 to test this software, the user can run the script *run_example.sh* .This will check whether the software can run on data of reads under multiple conditions. It will detect DTU gene and calculate the expression of genes and isoforms using the data from the bowtie folder.
+
+&nbsp;
+
+* * *
+
+## <a name="example" id="example"></a> Simulation Data 
+
+ We generated  two simulated datasets using our model based on the calculated hyperparameters and number of reads from the SEQC dataset. The two simulation datasets both used the Ensembl (NCBI37/hg19) as a reference.
+
+*   [Single-end simulation dataset]. (50bp, 4 condition, 3 replicates for each condition, 2000 genes)
+*   [Paired-end simulation dataset]. (50bp, 4 condition, 3 replicates for each condition, 2000 genes)
+
+&nbsp;
+
+* * *
+
+## <a name="authors"></a> Authors
 
 Xuejun Liu (xuejun.liu@nuaa.edu.cn).College of Computer Science and Technology, Nanjing University of Aeronautics and Astronautics, 29Jiangjun Rd., Jiangning District, 211106Nanjing China.
 
-The MLDA algorithm is developed by Xuejun Liu and Jing Li. The MLDA software is mainly implemented by Jing Li.
 
-#Related software
+* * *
 
-Bowtie2: for alignment of RNA-Seq reads to transcriptome (optionally with the precomputed set of splice junctions).
-
+</body></html>
