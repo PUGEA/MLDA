@@ -139,11 +139,12 @@ Description of output files:
 
 Here, we use a simple example to show the usage of MLDA. The alignment files from Bowtie 2 and the annotation file are also supplied.
 
-*    Annotation file: Homo_sapiens.GRCh37.71.gtf
+*    Annotation file: Homo_sapiens.GRCh37.71.gtf (download from ftp://ftp.ensembl.org/pub/release-71/gtf/homo_sapiens/Homo_sapiens.GRCh37.71.gtf.gz and save in the 'bowtie' folder)
 *    Alignment from Bowtie2: example1.sam...example8.sam (single-end,4 condition,2 replicate)
 *    Alignment from Bowtie2: example1.sam...example6.sam (paired-end,3 condition, 2 replicate)
 
 Since the Bowtie2 output has been supplied, so you can skip step1 and just run the following command.
+(The path is modified according to your own situation.)
 
 For single-end data:
 ```
