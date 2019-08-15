@@ -63,7 +63,7 @@ The software depends on the free and open-source software, the ***GNU Scientific
 If GSL is installed, the command above should return the following information:
 ```shell
 -I/sw/include
--L/sw/lib -lgsl ?Clm
+-L/sw/lib -lgsl -lm
 ```
 GSL can be found in the gsl subdirectory on your nearest GNU mirror ( http://ftpmirror.gnu.org/gsl/) or the Main GNU ftp site (ftp://ftp.gnu.org/gnu/gsl/). The users can download gsl-1.6.tar.gz or a higher version for NLDMseq. Please follow the instructions in the included file ??INSTALL?? to guide  the installation of this library.
 
@@ -79,13 +79,13 @@ We recommend using the Linux operating system.
 The following commands are used to align sequenced reads to a reference transcriptome.
 ```shell
 $ bowtie2-build -f ref_transcript. Fasta ref_transcript.index
-$ bowtie2 ?Ct ?Cf -k 20 -p 4 --no-hd --no-unal -x ref_transcript.index raw_data.fasta -S example.sam
+$ bowtie2 -t -f -k 20 -p 4 --no-hd --no-unal -x ref_transcript.index raw_data.fasta -S example.sam
 ```
 
 If the paired-end reads are processed, the Bowtie command should be listed as
 
 ```shell
-$ bowtie2 ?Ct ?Cf -k 20 -p 4 --no-hd --no-unal --no-mixed --no-discordant -x ref_transcript.index -1 raw_data.fasta -2 raw_data.fasta -S example.sam
+$ bowtie2 -t -f -k 20 -p 4 --no-hd --no-unal --no-mixed --no-discordant -x ref_transcript.index -1 raw_data.fasta -2 raw_data.fasta -S example.sam
 ```
 
 The above transcriptome reference sequence can be downloaded from UCSC or Ensembl website.
@@ -137,17 +137,23 @@ Description of output files:
 
 ## <a name="example"></a> Example
 
-Here, we use a simple example to show the usage of MLDA. The alignment files from Bowtie 2 are supplied and the annotation file need to be downloaded by yourself.
+Here, we use a simple example to show the usage of MLDA.
+
+* The alignment files from Bowtie 2 are supplied 
+(download from https://github.com/PUGEA/MLDA/example.tar.gz and put it in the same directory as the 'MLDA' folder.
+Unzip and get the 'bowtie' folder.)
+
+* The annotation file need to be downloaded by yourself.
+ (download from ftp://ftp.ensembl.org/pub/release-71/gtf/homo_sapiens/Homo_sapiens.GRCh37.71.gtf.gz and save it in the 'bowtie' folder)
 
 
-*    Alignment from Bowtie2: example1.sam...example4.sam (single-end,4 condition,1 replicate)
-*    Alignment from Bowtie2: example1.sam...example6.sam (paired-end,3 condition, 2 replicate)
-(download from https://github.com/PUGEA/MLDA/example.tar.gz and put it in the same directory as the 'MLDA' folder. Unzip and get the 'bowtie' folder.)
-*    Annotation file: Homo_sapiens.GRCh37.71.gtf (download from ftp://ftp.ensembl.org/pub/release-71/gtf/homo_sapiens/Homo_sapiens.GRCh37.71.gtf.gz and save in the 'bowtie' folder)
+*    Alignment from Bowtie2: example1.sam,...,example4.sam (single-end,4 condition,1 replicate)
+*    Alignment from Bowtie2: example1.sam,...,example6.sam (paired-end,3 condition, 2 replicate)
+*    Annotation file: Homo_sapiens.GRCh37.71.gtf
 
 Since the Bowtie2 output has been supplied, so you can skip step1 and just run the following command.
-('Path' is the path where the folder 'MLDA' is located.)
 
+('Path' is the path where the folder 'MLDA' is located.)
 
 For single-end data(4 conditions, one replicate per condition):
 ```
@@ -186,7 +192,9 @@ Use the example(Single-End Reads/Paired-End Reads) from aligning sequenced reads
 
  We generated  a simulated dataset using our model based on the calculated hyperparameters and number of reads from the SEQC dataset. The simulation dataset used the Ensembl (NCBI37/hg19) as a reference.
 
-*   [Single-end simulation dataset].https://github.com/PUGEA/MLDA/tree/master/simulations (50bp length, 4 condition, 3 replicates for each condition, 2000 genes are included)
+*   [Single-end simulation dataset].download at (https://github.com/PUGEA/MLDA/tree/master/simulations) 
+
+(50bp length, 4 condition, 3 replicates for each condition, 2000 genes are included)
 
 &nbsp;
 
