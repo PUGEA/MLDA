@@ -2,7 +2,6 @@
 
 
 A bioinformatics tool for detecting differential transcript usage across multiple conditions based on the smoothed LDA model from RNA-seq data.
-The software is an open-source software. You can redistribute it and/or modify it under the terms of the GNU General Public License (GPL) as published by the Free Software Foundation.
 
 Xuejun Liu (xuejun.liu@nuaa.edu.cn)
 
