@@ -182,7 +182,7 @@ Use the example(Single-End Reads/Paired-End Reads) from aligning sequenced reads
 
  We generated  a simulated dataset using our model based on the calculated hyperparameters and number of reads from the SEQC dataset. The simulation dataset used the Ensembl (NCBI37/hg19) as a reference.
 
-*   [Single-end simulation dataset]. (50bp, 4 condition, 3 replicates for each condition, 2000 genes)
+*   [Single-end simulation dataset].https://github.com/PUGEA/MLDA/tree/master/simulations (50bp, 4 condition, 3 replicates for each condition, 2000 genes)
 
 &nbsp;
 
