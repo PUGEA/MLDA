@@ -138,11 +138,11 @@ Description of output files:
 
 Here, we use a simple example to show the usage of MLDA.
 
-* The alignment files from Bowtie 2 are supplied 
+ The alignment files from Bowtie 2 are supplied 
 (download from https://github.com/PUGEA/MLDA/example.tar.gz and put it in the same directory as the 'MLDA' folder.
 Unzip and get the 'bowtie' folder.)
 
-* The annotation file need to be downloaded by yourself.
+ The annotation file need to be downloaded by yourself.
  (download from ftp://ftp.ensembl.org/pub/release-71/gtf/homo_sapiens/Homo_sapiens.GRCh37.71.gtf.gz and save it in the 'bowtie' folder)
 
 
@@ -168,7 +168,7 @@ After running the above command, you will obtain three output folders of this si
 
 For paired-end data :(3 conditions, 2 replicates per condition)
 ```
-$ $ python MLDA_calculation.py -c 3 -r 2 -o Path+/MLDA/Result \
+$  python MLDA_calculation.py -c 3 -r 2 -o Path+/MLDA/Result \
 -g Path+/MLDA/geneFileP -b 0.05 \
 -i Path+/bowtie/PE/sam/example1,\
 Path+/bowtie/PE/sam/example2,\
