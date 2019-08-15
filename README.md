@@ -49,7 +49,7 @@ $ python test.py
 ###Installation requirements:
 
 *   MLDA implementation uses Python (v.2.7) to pre-process the RNA-seq data and C language to obtain relative transcript abundances and gene/isoform expression levels.
-*   In MLDA, the Python codes use two special modules, [NumPy](http://www.numpy.org/) and [PP](http://www.parallelpython.com/) (parallel python).
+*   In MLDA, the Python codes use several special modules, [scipy](http://www.scipy.org/), [Statsmodels](https://www.statsmodels.org/stable/index.html), [NumPy](http://www.numpy.org/) and [PP](http://www.parallelpython.com/) (parallel python).
 *   MLDA uses Bowtie2 to align reads to transcript reference  sequences, so you need to have [Bowtie2](http://bowtie-bio.sourceforge.net/bowtie2/index.shtml) installed.
 *   GUN Scientific Library GCC 4.8.1 or higher(http://www.gnu.org/software/gsl/)
 
