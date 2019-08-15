@@ -111,7 +111,7 @@ Options:
 *   -b/--Bound: <float>  The cutoff of pvalue(qvalue) for DTU gene(e.g,0.05)'
 *   -i/--Input: File Path+Prefix name of alignment File(s) under all conditions,use comma separating the input files if more than one files are provided.(e.g,/home/tutut/example1,/home/tutut/example2)'
 *   -t/--AnnotationType   <int>    supported four annotation types: refGene: 1, ensGene: 2, knownGene: 3 and Ensembl: 4'
-*   -a/--AnnotationFile: The path of annotation file, the file includes the gene and isoform information. eg: refGene, knownGene, and ensGene, which all can be download UCSC website. If you use the Ensembl dataset, you may use the .gtf file.'
+*   -a/--AnnotationFile: The path of annotation file, the file includes the gene and isoform information. eg: refGene, knownGene, and ensGene, which all can be download UCSC website. If you use the Ensembl dataset, you may use the .gtf file.'(Download from ftp://ftp.ensembl.org/pub/release-71/gtf/homo_sapiens/Homo_sapiens.GRCh37.71.gtf.gz)
 
 Output files:
 
