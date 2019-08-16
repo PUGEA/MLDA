@@ -23,7 +23,7 @@ MLDA detects differential transcript usage across multiple conditions based on t
 procedure of the generation of RNA-seq reads and avoids the effects of multi-source mappings of reads. 
 It can directly obtain the relative abundance of transcripts and uses likelihood ratio test is to detect DTU.
 
-MLDA package is the software for detecting DTU genes and obtaining gene or isoform expressions under multiple conditions from RNA-seq data given a reference transcriptome,  The program obtains results using the alignment from Bowtie 2.
+MLDA package is the software for detecting DTU genes and obtaining accurate isoform usage under multiple conditions from RNA-seq data given a reference transcriptome. The program uses the alignment from Bowtie 2.
 
 * * *
 
@@ -40,7 +40,7 @@ $ bash ./install_LR1.sh
 
 To test this software, the user can run the python script *test.py* .
 This will check whether the software has been built and installed correctly. 
-It will detect DTU gene and calculate the expression of genes and isoforms using the data from the TEST_DATA folder.
+ It will detect DTU genes and calculate the relative transcript abundance using the data from the TEST_DATA folder.
 
 ```shell
 $ python test.py
