@@ -1,7 +1,7 @@
 #MLDA
 
 
-A bioinformatics tool for detecting differential transcript usage across multiple conditions based on the smoothed LDA model from RNA-seq data.
+A bioinformatic tool for detecting differential transcript usage across multiple conditions based on the smoothed LDA model from RNA-seq data.
 
 Xuejun Liu (xuejun.liu@nuaa.edu.cn)
 
@@ -11,8 +11,8 @@ Xuejun Liu (xuejun.liu@nuaa.edu.cn)
 ## <a name="introduction"></a>Features
 
 >* MLDA detects DTU genes under mulptiple conditions by likelihood ratio test based on maximum likelihood of two models(LR0 and LR1).
->* MLDA provides an approach to accurately estimate gene and isoform expression from RNA-Seq data by modeling the isoform- and exon-specific read sequencing biases.
->* MLDA provides an approach to accurately estimate isoform abundances under different conditions.
+>* MLDA provides an approach to accurately estimate isoform usage from RNA-Seq data by modeling the isoform- and exon-specific read sequencing biases. 
+>* The relative transcript abundances are modeled as random variables and their variability is accounted in the model.
 
 * * *
 
