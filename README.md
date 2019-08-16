@@ -87,11 +87,11 @@ If the paired-end reads are processed, the Bowtie command should be listed as
 $ bowtie2 -t -f -k 20 -p 4 --no-hd --no-unal --no-mixed --no-discordant -x ref_transcript.index -1 raw_data.fasta -2 raw_data.fasta -S example.sam
 ```
 
-The above transcriptome reference sequence can be downloaded from UCSC or Ensembl website.
+The above transcriptome reference sequence can be downloaded from UCSC or Ensembl websites.
 
 ### &nbsp;
 
-### Step 2. Detect DTU gene and calculate expression values with MLDA
+### Step 2. Detect DTU genes and calculate expression values with MLDA
 
 The software uses the alignment SAM file from Bowtie 2 as input data.
 
@@ -103,14 +103,14 @@ Options:
 
 *   -h/--Help #get help info
 *   -s/--SingleEnd: Input data are Single-end reads alignment. (Default: off)
-*   -c/--Condition: <int> The value of condition
-*   -r/--Replicate: <int > The value of replicate
+*   -c/--Condition: <int> The number of conditions
+*   -r/--Replicate: <int > The number of replicates
 *   -o/--OutputPath: All output files are in this direction
-*   -g/--GeneFile: The path of genename file including all genenames for detecting DTU, the genename is the beginning of each line.(format:"ENSG00000000003\t...\n")
-*   -b/--Bound: <float>  The cutoff of pvalue(qvalue) for DTU gene(e.g,0.05)'
-*   -i/--Input: File Path+Prefix name of alignment File(s) under all conditions,use comma separating the input files if more than one files are provided.(e.g,/home/tutut/example1,/home/tutut/example2)'
-*   -t/--AnnotationType   <int>    supported four annotation types: refGene: 1, ensGene: 2, knownGene: 3 and Ensembl: 4'
-*   -a/--AnnotationFile: The path of annotation file, the file includes the gene and isoform information. eg: refGene, knownGene, and ensGene, which all can be download UCSC website. If you use the Ensembl dataset, you may use the .gtf file.'(Download from ftp://ftp.ensembl.org/pub/release-71/gtf/homo_sapiens/Homo_sapiens.GRCh37.71.gtf.gz)
+*   -g/--GeneFile: The path of genename file including all genenames for detecting DTU, the genename is the beginning of each line.(Format example:"ENSG00000000003\t...\n")
+*   -b/--Bound: <float>  The cutoff of pvalues(qvalues) for DTU genes(e.g.,0.05)
+*   -i/--Input: File Path+Prefix name of alignment File(s) under all conditions, use comma separating the input files if more than one files are provided.(e.g,/home/tutut/example1,/home/tutut/example2)'
+*   -t/--AnnotationType   <int>    supported four annotation types: refGene: 1, ensGene: 2, knownGene: 3 and Ensembl: 4
+*   -a/--AnnotationFile: The path of annotation file. The file includes the gene and isoform information. eg: refGene, knownGene, and ensGene, which can be all downloaded from UCSC website. If you use the Ensembl dataset, you may use the .gtf file. (Download from ftp://ftp.ensembl.org/pub/release-71/gtf/homo_sapiens/Homo_sapiens.GRCh37.71.gtf.gz)
 
 Output files:
 
@@ -120,11 +120,11 @@ Description of output files:
 
 *   **Folder: LR0_result/LR1_result:
 
-*   **(1) alpha: Dirichlet distribution hyperparameter of isoform abundances
-*   **(2) eta: Dirichlet distribution hyperparameter of exon abundances
-*   **(3) gammas: isoform abundances under all conditions
-*   **(4) geneExpre: FPKM expression value of gene under all samples
-*   **(5) isoExpre: FPKM expression value of isoform under all samples
+*   **(1) alpha: The maximum likelihood estimation of the hyperparameter α
+*   **(2) eta: The maximum likelihood estimation of the hyperparameter η
+*   **(3) gammas: The estimated relative transcript abundance under all conditions
+*   **(4) geneExpre: FPKM expression estimation of genes for all samples
+*   **(5) isoExpre: FPKM expression estimation of isoforms for all samples
 *   **(6) likelihood: Maximum log likelihood of each gene
 
 *   **Folder: LRT_result
@@ -146,11 +146,11 @@ Unzip and get the 'bowtie' folder.)
  (download from ftp://ftp.ensembl.org/pub/release-71/gtf/homo_sapiens/Homo_sapiens.GRCh37.71.gtf.gz and save it in the 'bowtie' folder)
 
 
-*    Alignment from Bowtie2: example1.sam,...,example4.sam (single-end,4 condition,1 replicate)
-*    Alignment from Bowtie2: example1.sam,...,example6.sam (paired-end,3 condition, 2 replicate)
+*    Alignment from Bowtie2: example1.sam,...,example4.sam (single-end,4 conditions,1 replicate)
+*    Alignment from Bowtie2: example1.sam,...,example6.sam (paired-end,3 conditions, 2 replicates)
 *    Annotation file: Homo_sapiens.GRCh37.71.gtf
 
-Since the Bowtie2 output has been supplied, so you can skip step1 and just run the following command.
+Since the Bowtie2 outputs have been supplied, so you can skip step1 and just run the following command.
 
 ('Path' is the path where the folder 'MLDA' is located.)
 
@@ -180,9 +180,6 @@ Path+/bowtie/PE/sam/example6 \
 ```
 After running the above command, you will obtain three output folders of this paired-end data, ***LR0_result*** and ***LR1_result*** ***LRT_result*** under -o path.
 
-
-Use the example(Single-End Reads/Paired-End Reads) from aligning sequenced reads with Bowtie 2 to test this software, the user can run the script *run_example.sh* .This will check whether the software can run on data of reads under multiple conditions. It will detect DTU gene and calculate the expression of genes and isoforms using the data from the bowtie folder.
-
 &nbsp;
 
 * * *
@@ -193,13 +190,15 @@ Use the example(Single-End Reads/Paired-End Reads) from aligning sequenced reads
 
 *   [Single-end simulation dataset].download at (https://github.com/PUGEA/MLDA/tree/master/simulations) 
 
-(50bp length, 4 condition, 3 replicates for each condition, 2000 genes are included)
+(50bp length, 4 conditions, 3 replicates for each condition, 2000 genes)
 
 &nbsp;
 
 * * *
 
 ## <a name="authors"></a> Authors
+
+Jing li (19850826268@163.com).College of Computer Science and Technology, Nanjing University of Aeronautics and Astronautics, 29Jiangjun Rd., Jiangning District, 211106Nanjing China.
 
 Xuejun Liu (xuejun.liu@nuaa.edu.cn).College of Computer Science and Technology, Nanjing University of Aeronautics and Astronautics, 29Jiangjun Rd., Jiangning District, 211106Nanjing China.
 
