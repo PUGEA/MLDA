@@ -50,21 +50,21 @@ $ python test.py
 
 *   MLDA implementation uses Python (v.2.7) to pre-process the RNA-seq data and C language to obtain relative transcript abundances and gene/isoform expression levels.
 *   In MLDA, the Python codes use several special modules, [scipy](http://www.scipy.org/), [Statsmodels](https://www.statsmodels.org/stable/index.html), [NumPy](http://www.numpy.org/) and [PP](http://www.parallelpython.com/) (parallel python).
-*   MLDA uses Bowtie2 to align reads to transcript reference  sequences, so you need to have [Bowtie2](http://bowtie-bio.sourceforge.net/bowtie2/index.shtml) installed.
+*   MLDA uses Bowtie2 to align reads to reference transcriptome, so [Bowtie2](http://bowtie-bio.sourceforge.net/bowtie2/index.shtml) has to be installed.
 *   GUN Scientific Library GCC 4.8.1 or higher(http://www.gnu.org/software/gsl/)
 
 * * *
 
 ###NOTE: 
- ***PP*** is a python module which provides mechanism for parallel execution of python code on SMP(systems with multiple processors or cores) and clusters (computers connected via network). It is light, easy to install and integrate with other python software. PP is an open-source and cross-platform module written in pure python.
+ ***PP*** is a python module which provides mechanism for parallel execution of python codes on SMP(systems with multiple processors or cores) and clusters (computers connected via network). It is light, easy to install and integrate with other python softwares. PP is an open-source and cross-platform module written in pure python.
 
-The software depends on the free and open-source software, the ***GNU Scientific Library (GSL)*** (http://www.gnu.org/software/gsl/), so the GSL needs to be installed on the user??s system. NLDMseq requires the GSL installed in /usr/local, which is the default location. The GSL can be compiled by the user. Users who are compiling NLDMseq from the source code should install GSL in the standard location (/usr/local). If you are not sure if GSL is already installed, at the Terminal prompt $ type:`$gsl-config --cflags --libs-without-cblas`
+The software depends on the free and open-source software, the ***GNU Scientific Library (GSL)*** (http://www.gnu.org/software/gsl/), so the GSL needs to be installed on the user's system. MLDA requires the GSL installed in /usr/local, which is the default location. The GSL can be compiled by the user. Users who are compiling MLDA from the source codes should install GSL in the standard location (/usr/local). If you are not sure if GSL is already installed, at the Terminal prompt $ type:`$gsl-config --cflags --libs-without-cblas`
 If GSL is installed, the command above should return the following information:
 ```shell
 -I/sw/include
 -L/sw/lib -lgsl -lm
 ```
-GSL can be found in the gsl subdirectory on your nearest GNU mirror ( http://ftpmirror.gnu.org/gsl/) or the Main GNU ftp site (ftp://ftp.gnu.org/gnu/gsl/). The users can download gsl-1.6.tar.gz or a higher version for NLDMseq. Please follow the instructions in the included file ??INSTALL?? to guide  the installation of this library.
+GSL can be found in the gsl subdirectory on your nearest GNU mirror ( http://ftpmirror.gnu.org/gsl/) or the Main GNU ftp site (ftp://ftp.gnu.org/gnu/gsl/). The users can download gsl-1.6.tar.gz or a higher version for MLDA. Please follow the instructions in the included file INSTALL to guide  the installation of this library.
 
 We recommend using the Linux operating system. 
 
